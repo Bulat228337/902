@@ -1,0 +1,45 @@
+CREATE TABLE `user`(
+`iduser` INT AUTO_INCREMENT NOT NULL,
+`login` VARCHAR(45) NULL,
+`password` VARCHAR(45) NULL,
+PRIMARY KEY (`iduser`));
+ 
+CREATE TABLE `wall`(
+`idwall` INT AUTO_INCREMENT NOT NULL,
+`wall` VARCHAR(45) NULL,
+`admin_id` INT NULL,
+`wallcol` VARCHAR(45) NULL,
+PRIMARY KEY (`idwall`));
+  
+CREATE TABLE `profile`(
+`idprofile` INT AUTO_INCREMENT NOT NULL,
+`name` VARCHAR(45) NOT NULL,
+`surname` VARCHAR(45) NOT NULL,
+`male/female` VARCHAR(45) NULL,
+`email` VARCHAR(45) NULL,
+PRIMARY KEY (`idprofile`));
+ 
+CREATE TABLE `chat`(
+`idchat` INT AUTO_INCREMENT NOT NULL,
+`name` VARCHAR(45) NOT NULL,
+`participants` VARCHAR(45) NULL,
+PRIMARY KEY (`idchat`));
+ 
+CREATE TABLE `message`(
+`idmessage` INT AUTO_INCREMENT NOT NULL,
+`chat_id` VARCHAR(45) NOT NULL,
+`text` VARCHAR(45) NOT NULL,
+`chat_idchat` INT NOT NULL,
+PRIMARY KEY (`idmessage`));
+
+alter table wall
+add constraint foreign key (idwall) references user (iduser); 
+
+alter table profile 
+add constraint foreign key (idprofile) references user (iduser); 
+
+alter table chat 
+add constraint foreign key (idchat) references message (idmessage); 
+
+alter table message
+add constraint foreign key (idmessage) references user (iduser);

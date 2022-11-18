@@ -1,0 +1,121 @@
+#
+# TABLE STRUCTURE FOR: chat
+#
+
+DROP TABLE IF EXISTS `chat`;
+
+CREATE TABLE `chat` (
+  `idchat` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `participants` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idchat`),
+  CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`idchat`) REFERENCES `message` (`idmessage`)
+) ENGINE=InnoDB AUTO_INCREMENT=281 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+#
+# TABLE STRUCTURE FOR: message
+#
+
+DROP TABLE IF EXISTS `message`;
+
+CREATE TABLE `message` (
+  `idmessage` int(11) NOT NULL AUTO_INCREMENT,
+  `chat_id` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chat_idchat` int(11) NOT NULL,
+  PRIMARY KEY (`idmessage`),
+  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`idmessage`) REFERENCES `user` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (1, '8', 'Error ut odit ducimus facere laudantium eum m', 3);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (2, '', 'Dolores corporis quis eos aut amet quidem. Vo', 2);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (3, '8', 'Odit fugit earum dignissimos quo numquam quo.', 2);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (4, '9', 'Quia repudiandae quis magni accusamus est qua', 0);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (5, '2', 'Optio et exercitationem rerum architecto eos ', 1);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (6, '1', 'Quo voluptatum rerum modi repellat pariatur a', 1);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (7, '2', 'Qui nobis non atque quos ad inventore. Ipsam ', 7);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (8, '8', 'Laudantium eveniet consequuntur officiis inci', 5);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (9, '1', 'Et suscipit id omnis pariatur ipsa repellendu', 6);
+INSERT INTO `message` (`idmessage`, `chat_id`, `text`, `chat_idchat`) VALUES (10, '9', 'Minus necessitatibus autem aut odit laudantiu', 2);
+
+
+#
+# TABLE STRUCTURE FOR: profile
+#
+
+DROP TABLE IF EXISTS `profile`;
+
+CREATE TABLE `profile` (
+  `idprofile` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surname` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `male/female` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idprofile`),
+  CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`idprofile`) REFERENCES `user` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (1, 'non', 'vel', 'Mr.', 'goldner.sheldon@example.com');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (2, 'eum', 'ut', 'Prof.', 'deondre.wuckert@example.org');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (3, 'et', 'sit', 'Prof.', 'zoila.mcdermott@example.com');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (4, 'perferendis', 'rem', 'Miss', 'schulist.delbert@example.com');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (5, 'minus', 'cum', 'Prof.', 'yfriesen@example.com');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (6, 'et', 'aliquid', 'Prof.', 'wwhite@example.net');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (7, 'fugit', 'molestias', 'Dr.', 'flynch@example.net');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (8, 'ad', 'ducimus', 'Mr.', 'mgislason@example.net');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (9, 'dicta', 'officia', 'Miss', 'kassulke.dion@example.org');
+INSERT INTO `profile` (`idprofile`, `name`, `surname`, `male/female`, `email`) VALUES (10, 'nisi', 'rerum', 'Miss', 'mac78@example.com');
+
+
+#
+# TABLE STRUCTURE FOR: user
+#
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (1, '', '6f7fdba497a7b8cd036afc3f1fcd23e26a2955b7');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (2, '', 'f9316d03000cbf7b4e1a22f7026e513859ba043a');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (3, '7', 'a6ecb556478bf216047e2cc46452a175415eea17');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (4, '6', '0c4c51f37c56cd063408a93634383b7dd83dac1f');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (5, '3', '34713d320178832eba5fb674e9a11a0f3f50038b');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (6, '5', '3873760ea954bc53c59fd4ba07cf86c504616b30');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (7, '7', '79669821c050992d66caa6dc8801aba42795cc26');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (8, '7', '2a055c13f96b7ea3eb825739acbd508fb8450286');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (9, '5', 'f269bb8aa3127b7d025a4f5f985112f6d7bd5fda');
+INSERT INTO `user` (`iduser`, `login`, `password`) VALUES (10, '1', '0608a82f20cdda3b91edc976e5fb091bb08893be');
+
+
+#
+# TABLE STRUCTURE FOR: wall
+#
+
+DROP TABLE IF EXISTS `wall`;
+
+CREATE TABLE `wall` (
+  `idwall` int(11) NOT NULL AUTO_INCREMENT,
+  `wall` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_id` int(11) DEFAULT NULL,
+  `wallcol` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idwall`),
+  CONSTRAINT `wall_ibfk_1` FOREIGN KEY (`idwall`) REFERENCES `user` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (1, '2', NULL, '2');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (2, '', NULL, '7');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (3, '7', NULL, '1');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (4, '8', NULL, '8');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (5, '8', NULL, '');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (6, '2', NULL, '8');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (7, '', NULL, '7');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (8, '7', NULL, '2');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (9, '7', NULL, '5');
+INSERT INTO `wall` (`idwall`, `wall`, `admin_id`, `wallcol`) VALUES (10, '3', NULL, '6');
+
+
