@@ -1,0 +1,8 @@
+1)
+select idprofile, name, surname
+from profile p  
+order by idprofile;
+2)
+select *
+from friends
+where id <10;

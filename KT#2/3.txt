@@ -1,0 +1,17 @@
+1)
+select surname, idwall, idmedia
+from profile
+inner join wall on
+idprofile = idwall 
+inner join seive on 
+idprofile = media_id
+order by idprofile;
+2)
+select surname, idwall, idmedia
+from profile
+inner join wall on
+idprofile = idwall 
+inner join seive on 
+idprofile = idmedia
+where idmedia >= 30
+order by idprofile;

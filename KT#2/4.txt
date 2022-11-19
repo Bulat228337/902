@@ -1,0 +1,16 @@
+1)
+select surname, idwall, idmedia, status
+from profile
+inner join wall on
+idprofile = idwall
+inner join seive on 
+idprofile = idmedia
+where status = (select max(status)from profile);
+2)
+select surname, post.id, idmedia, status
+from profile
+inner join wall on
+idprofile = idwall 
+inner join seive on 
+idprofile = idmedia
+where status = (select min(status)from profile);
